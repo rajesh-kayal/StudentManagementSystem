@@ -9,12 +9,19 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <style>
     body{
-        background-color: rgb(255, 185, 237);
+        background-color: rgb(200, 189, 198);
     }
 </style>
 </head>
 <body>
     <div class="container">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                @foreach ($errors->all() as $error )
+                    <li>{{$error}}</li>
+                @endforeach
+            </div>
+        @endif
         <header class="modal-header"><h2>Student Management</h2></header>
         <form action="{{url('/insert')}}" method="post" enctype="multipart/form-data">
             @csrf
@@ -89,7 +96,7 @@
         </div>
                 <div class="form-group">
             <label for="password">Confirm Password</label>
-            <input type="password" name="pass.c" id="pass.c" class="form-control">
+            <input type="password"  name="pass_confirmation" id="pass_confirmation" class="form-control">
         </div>
         <input type="submit" class="btn btn-outline-success" value="sign up">
         </form>
